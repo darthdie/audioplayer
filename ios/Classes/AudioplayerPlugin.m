@@ -13,6 +13,7 @@ static AVPlayerItem *playerItem;
 @interface AudioplayerPlugin()
 -(void) pause;
 -(void) stop;
+-(void) resume;
 -(void) mute: (BOOL) muted;
 -(void) seek: (CMTime) time;
 -(void) onSoundComplete;
@@ -78,6 +79,11 @@ FlutterMethodChannel *_channel;
                                 NSLog(@"pause");
                                 [self pause];
                               },
+                            @"resume":
+                              ^{
+                                NSLog(@"resume");
+                                [self resume];
+                              }
                             @"stop":
                               ^{
                                 NSLog(@"stop");

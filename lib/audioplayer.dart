@@ -27,13 +27,20 @@ class AudioPlayer {
   Future<dynamic> play(String url, {bool isLocal: false}) =>
       channel.invokeMethod('play', {"url": url, "isLocal": isLocal});
 
+  Future<dynamic> load(String url, {bool isLocal: false}) =>
+      channel.invokeMethod('load', {"url": url, "isLocal": isLocal});
+
   Future<dynamic> pause() => channel.invokeMethod('pause');
+
+  Future<dynamic> resume() => channel.invokeMethod('resume');
 
   Future<dynamic> stop() => channel.invokeMethod('stop');
 
   Future<dynamic> mute(bool muted) => channel.invokeMethod('mute', muted);
 
   Future<dynamic> seek(double seconds) => channel.invokeMethod('seek', seconds);
+
+  Future<dynamic> setRate(double rate) => channel.invokeMethod('setRate', rate);
 
   void setDurationHandler(TimeChangeHandler handler) {
     durationHandler = handler;
